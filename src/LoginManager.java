@@ -14,7 +14,7 @@ public class LoginManager {
         while (choice < 1 || choice > 4) {
             System.out.println("Invalid option. Please select 1-4");
             System.out.println("Select option(1-4): ");
-            choice = int.nextInt();
+            choice = input.nextInt();
         }
 
         return choice;
