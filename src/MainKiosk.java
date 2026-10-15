@@ -5,15 +5,17 @@ public class MainKiosk {
 // Shared 1D Parallel Arrays (Capacity for 50 members)
         int[] memberIDs = new int[50];
         String[] memberNames = new String[50];
-        memberIDs[0] = 1001; memberNames[0] = "Alex";
-        memberIDs[1] = 1002; memberNames[1] = "Sarah";
+        memberIDs[0] = 1001;
+        memberNames[0] = "Alex";
+        memberIDs[1] = 1002;
+        memberNames[1] = "Sarah";
         int memberCount = 2;
 
-        
-        String[] menuItems = { "Espresso", "Iced Latte", "Signature Matcha", "Passion Tea" };
-        double[] menuPrices = { 3.00, 4.50, 5.00, 4.00 };
+
+        String[] menuItems = {"Espresso", "Iced Latte", "Signature Matcha", "Passion Tea"};
+        double[] menuPrices = {3.00, 4.50, 5.00, 4.00};
         int[] cartQuantities = new int[menuItems.length];
-        
+
         String currentName = "Guest";
         boolean isMember = false;
 
@@ -67,3 +69,4 @@ public class MainKiosk {
                     System.out.println("Invalid choice! Please select between 1 and 4.");
             }
         }
+    }}
