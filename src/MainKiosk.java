@@ -1,13 +1,76 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+import java.util.Scanner;
+
+public class MainKiosk {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+       
+        int[] memberIDs = new int[50];
+        String[] memberNames = new String[50];
+        memberIDs[0] = 1001; memberNames[0] = "Alex";
+        memberIDs[1] = 1002; memberNames[1] = "Sarah";
+        int memberCount = 2;
+
+        String[] menuItems = { "Espresso", "Iced Latte", "Signature Matcha", "Passion Tea" };
+        double[] menuPrices = { 3.00, 4.50, 5.00, 4.00 };
+        int[] cartQuantities = new int[menuItems.length];
+
+        String currentName = "Guest";
+        boolean isMember = false;
+
+        
+        System.out.println("1. Login | 2. Register | 3. Guest");
+        int authChoice = input.nextInt();
+
+        if (authChoice == 1) {
+            int idx = LoginManager.checkLogin(input, memberIDs, memberCount);
+            if (idx != -1) { 
+                currentName = memberNames[idx]; 
+                isMember = true; 
+            }
+        } else if (authChoice == 2) {
+            currentName = RegistrationManager.register(input, memberIDs, memberNames, memberCount);
+            isMember = true; 
+            memberCount++;
+        }
+
+ 
+        boolean running = true;
+        while (running) {
+            System.out.println("\n==================================================");
+            System.out.println("              BREWMASTER Main Menu                ");
+            System.out.println("==================================================");
+            System.out.println("Customer: " + currentName + " | Status: " + (isMember ? "Member (15% OFF)" : "Guest"));
+            System.out.println("--------------------------------------------------");
+            System.out.println("1. Browse Drink Categories & Add to Cart");
+            System.out.println("2. View Shopping Cart & Subtotal");
+            System.out.println("3. Checkout & Print Receipt");
+            System.out.println("4. Cancel Order & Logout");
+            System.out.println("--------------------------------------------------");
+            System.out.print("Select Option (1-4): ");
+            
+            int choice = input.nextInt();
+            
+            switch (choice) {
+                case 1:
+                    CategoryManager.browse(input, menuItems, menuPrices, cartQuantities);
+                    break;
+                case 2:
+                    CartManager.viewCart(menuItems, menuPrices, cartQuantities);
+                    break;
+                case 3:
+                    ReceiptManager.printReceipt(currentName, isMember, menuItems, menuPrices, cartQuantities);
+                    running = false;
+                    break;
+                case 4:
+                    System.out.println("\nOrder canceled. Logging out. Goodbye!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid option! Please select between 1 and 4.");
+            }
+        }
+        input.close();
     }
 }
