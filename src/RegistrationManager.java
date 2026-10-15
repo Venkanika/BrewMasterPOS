@@ -1,6 +1,5 @@
+import java.util.Scanner;
 public class RegistrationManager {
-  import java.util.Scanner;
-
     public static int register( Scanner input, int[] memberIDs, String[] memberNames, int memberCount) {
 
         System.out.println("\n--- NEW MEMBER REGISTRATION ---");
