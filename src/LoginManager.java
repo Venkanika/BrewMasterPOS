@@ -21,18 +21,17 @@ public class MainKiosk {
         int authChoice = input.nextInt();
         
         if (authChoice == 1) {
-            int idx = LoginManager.checkLogin(input, memberIDs, memberCount); // Member 2
+            int idx = LoginManager.checkLogin(input, memberIDs, memberCount); 
             if (idx != -1) { 
                 currentName = memberNames[idx]; 
                 isMember = true; 
             }
         } else if (authChoice == 2) {
-            currentName = RegistrationManager.register(input, memberIDs, memberNames, memberCount); // Member 3
+            currentName = RegistrationManager.register(input, memberIDs, memberNames, memberCount); 
             isMember = true; 
             memberCount++;
         }
         
-        // --- MAIN APPLICATION MENU (Leader Orchestration) ---
         boolean running = true;
         while (running) {
             System.out.println("\n==================================================");
@@ -52,14 +51,14 @@ public class MainKiosk {
             switch (choice) {
                 case 1: 
                     CategoryManager.browse(input, menuItems, menuPrices, cartQuantities); 
-                    break; // Member 4
+                    break; 
                 case 2: 
                     CartManager.viewCart(menuItems, menuPrices, cartQuantities); 
-                    break; // Member 5
+                    break; 
                 case 3: 
                     ReceiptManager.printReceipt(currentName, isMember, menuItems, menuPrices, cartQuantities); 
                     running = false; 
-                    break; // Leader
+                    break; 
                 case 4: 
                     System.out.println("\nSession ended. Goodbye!");
                     running = false; 
