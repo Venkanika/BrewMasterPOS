@@ -1,4 +1,3 @@
-// FILE: MainKiosk.java (Leader / Core Loop)
 import java.util.Scanner;
 public class MainKiosk {
     public static void main(String[] args) {
