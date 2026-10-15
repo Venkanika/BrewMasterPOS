@@ -6,7 +6,7 @@ public class CategoryManager {
 
         while (addAnother) {
 
-            System.out.println("\n=== DRINK CATEGORIES ===");
+            System.out.println("\n DRINK CATEGORIES ");
             System.out.println("1. Coffee");
             System.out.println("2. Matcha");
             System.out.println("3. Juice");
@@ -19,7 +19,7 @@ public class CategoryManager {
                 continue;
             }
 
-            System.out.println("\n=== TEMPERATURE ===");
+            System.out.println("\n TEMPERATURE ");
             System.out.println("1. Hot");
             System.out.println("2. Cold");
             System.out.print("Select temperature (1-2): ");
@@ -120,7 +120,7 @@ public class CategoryManager {
                     break;
             }
 
-            System.out.println("\n=== DRINK MENU ===");
+            System.out.println("\n DRINK MENU ");
 
             for (int i = 0; i < drinks.length; i++) {
                 System.out.printf("%d. %s - $%.2f%n",
