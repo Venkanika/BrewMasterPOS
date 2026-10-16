@@ -19,8 +19,8 @@ public class MainKiosk {
         String currentName = "Guest";
         boolean isMember = false;
 
-        System.out.println("1. Login | 2. Register | 3. Guest");
-        int authChoice = input.nextInt();
+
+        int authChoice = LoginManager.showLoginMenu(input);
 
         if (authChoice == 1) {
             int idx = LoginManager.checkLogin(input, memberIDs, memberCount);
@@ -32,6 +32,12 @@ public class MainKiosk {
             currentName = RegistrationManager.register(input, memberIDs, memberNames, memberCount);
             isMember = true;
             memberCount++;
+        } else if (authChoice == 3) {
+            currentName = "Guest";
+            isMember = false;
+         } else if (authChoice == 4) {
+            System.out.println("Exiting system. Goodbye!");
+            System.exit(0);
         }
 
         boolean running = true;
